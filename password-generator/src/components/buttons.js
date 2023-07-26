@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-export const ButtonMinus = () => {
+export const ButtonMinus = ({click}) => {
   return (
-    <Button>-</Button>
+    <Button onClick={click}>-</Button>
   )
 };
 
-export const ButtonPlus = () => {
+export const ButtonPlus = ({click}) => {
   return (
-    <Button>+</Button>
+    <Button onClick={click}>+</Button>
   )
 };
 

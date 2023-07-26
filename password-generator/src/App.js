@@ -12,17 +12,41 @@ function App() {
     capitals: true
   });
 
+  const incrementNumSpan = () => {
+    changeNumberSpan((previousState) => {
+      const newState = {...previousState}
+      newState.defaultNum += 1;
+      return newState;
+    });
+  };
+
+  const decrementNumSpan = () => {
+    if(numberSpan.defaultNum >= 5){
+      changeNumberSpan((previousState) => {
+        const newState = {...previousState}
+        newState.defaultNum -= 1;
+        return newState;
+      });
+    } else if(numberSpan.defaultNum < 5)  {
+      alert(`Passwords with less than five character are not safe`)
+    }
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="container">
     <h1 className="title">Password Generator</h1>
     
-      <form>
+      <form onSubmit={onSubmit}>
         <Row>
           <label>Número de caracteres:</label>
           <Control>
-            <ButtonMinus/>
+            <ButtonMinus click={decrementNumSpan}/>
             <span>{numberSpan.defaultNum}</span>
-            <ButtonPlus/>
+            <ButtonPlus click={incrementNumSpan}/>
           </Control>
         </Row>
         <Row>

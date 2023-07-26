@@ -34,6 +34,7 @@ function App() {
     }
   };
 
+  /**Changing the state of numberSpan.symbol to false if clicked */
   const buttonNo = () => {
     changeNumberSpan((previousState) => {
       const newState = {...previousState};
@@ -42,6 +43,7 @@ function App() {
     })
   };
 
+  /**Changing the state of numberSpan.numbers to false if clicked */
   const buttonNumbers = () => {
     changeNumberSpan((previousState) => {
       const newState = {...previousState};
@@ -50,6 +52,7 @@ function App() {
     })
   };
 
+  /**Changing the state of numberSpan.capital to false if clicked */
   const buttonCap = () => {
     changeNumberSpan((previousState) => {
       const newState = {...previousState};
@@ -70,6 +73,7 @@ function App() {
         <Row>
           <label>Número de caracteres:</label>
           <Control>
+            {/* Receives the function with parameter { click } in button.js. Line 4 to 14*/}
             <ButtonMinus click={decrementNumSpan}/>
             <span>{numberSpan.defaultNum}</span>
             <ButtonPlus click={incrementNumSpan}/>
@@ -77,14 +81,17 @@ function App() {
         </Row>
         <Row>
           <label>Include symbols?</label>
+          {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
           <ButtonYes selected={numberSpan.symbol} click={buttonNo}/>
         </Row>
         <Row>
           <label>Include numbers?</label>
+          {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
           <ButtonYes selected={numberSpan.numbers} click={buttonNumbers}/>
         </Row>
         <Row>
           <label>Include capital letters?</label>
+          {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
           <ButtonYes selected={numberSpan.capitals} click={buttonCap}/>
         </Row>
         <Row>

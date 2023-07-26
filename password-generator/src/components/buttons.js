@@ -13,10 +13,16 @@ export const ButtonPlus = ({click}) => {
   )
 };
 
-export const ButtonYes = () => {
-  return (
-    <Button>Yes</Button>
-  )
+export const ButtonYes = ({selected, click}) => {
+  if(selected){
+    return (
+      <Button onClick={click}>Yes</Button>
+    )
+  } else {
+     return (
+      <Button onClick={click}>No</Button>
+     )
+   }
 };
 
 export const ButtonGenerate = () => {
@@ -42,3 +48,7 @@ const Button = styled.button`
     background: #866FFD;
   }
 `;
+
+// const ButtonNo = styled(Button)`
+
+// `;

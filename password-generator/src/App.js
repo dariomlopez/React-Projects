@@ -7,11 +7,12 @@ function App() {
 
   const [numberSpan, changeNumberSpan] = useState({
     defaultNum: 7,
-    symbols: true,
+    symbol: true,
     numbers: true,
     capitals: true
   });
 
+  /**Incrementing the number in the span with a function */
   const incrementNumSpan = () => {
     changeNumberSpan((previousState) => {
       const newState = {...previousState}
@@ -20,16 +21,41 @@ function App() {
     });
   };
 
+  /**Decrementing the number in the span with a function */
   const decrementNumSpan = () => {
     if(numberSpan.defaultNum >= 5){
       changeNumberSpan((previousState) => {
-        const newState = {...previousState}
+        const newState = {...previousState};
         newState.defaultNum -= 1;
         return newState;
       });
     } else if(numberSpan.defaultNum < 5)  {
       alert(`Passwords with less than five character are not safe`)
     }
+  };
+
+  const buttonNo = () => {
+    changeNumberSpan((previousState) => {
+      const newState = {...previousState};
+      newState.symbol = !newState.symbol;
+      return newState;
+    })
+  };
+
+  const buttonNumbers = () => {
+    changeNumberSpan((previousState) => {
+      const newState = {...previousState};
+      newState.numbers = !newState.numbers;
+      return newState;
+    })
+  };
+
+  const buttonCap = () => {
+    changeNumberSpan((previousState) => {
+      const newState = {...previousState};
+      newState.capitals = !newState.capitals;
+      return newState;
+    })
   };
 
   const onSubmit = (event) => {
@@ -51,15 +77,15 @@ function App() {
         </Row>
         <Row>
           <label>Include symbols?</label>
-          <ButtonYes/>
+          <ButtonYes selected={numberSpan.symbol} click={buttonNo}/>
         </Row>
         <Row>
           <label>Include numbers?</label>
-          <ButtonYes/>
+          <ButtonYes selected={numberSpan.numbers} click={buttonNumbers}/>
         </Row>
         <Row>
           <label>Include capital letters?</label>
-          <ButtonYes/>
+          <ButtonYes selected={numberSpan.capitals} click={buttonCap}/>
         </Row>
         <Row>
           <ButtonGenerate/>

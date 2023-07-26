@@ -1,6 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
-
+import { ButtonMinus, ButtonPlus } from "./components/buttons";
 
 function App() {
   return (
@@ -11,14 +11,14 @@ function App() {
         <Row>
           <label>Número de caracteres:</label>
           <Control>
-            <Button>-</Button>
+            <ButtonMinus/>
             <span>0</span>
-            <Button>+</Button>
+            <ButtonPlus/>
           </Control>
         </Row>
         <Row>
           <label>Incluir simbolos</label>
-          <Button>Sí</Button>
+          {/* <Button>Sí</Button> */}
         </Row>
       </form>
     
@@ -34,27 +34,6 @@ const Row = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 `;
-
-const Button = styled.button`
-  width: 100%;
-  height: 40px;
-  background: #684BFF;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 900;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 1s ease;
-
-  &:hover {
-    background: #866FFD;
-  }
-`;
-
 
 const Control = styled.div`
   display: flex;

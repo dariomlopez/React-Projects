@@ -1,6 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
-import { ButtonMinus, ButtonPlus } from "./components/buttons";
+import { ButtonMinus, ButtonPlus, ButtonYes, ButtonGenerate } from "./components/buttons";
 
 function App() {
   return (
@@ -17,8 +17,20 @@ function App() {
           </Control>
         </Row>
         <Row>
-          <label>Incluir simbolos</label>
-          {/* <Button>Sí</Button> */}
+          <label>Include symbols?</label>
+          <ButtonYes/>
+        </Row>
+        <Row>
+          <label>Include numbers?</label>
+          <ButtonYes/>
+        </Row>
+        <Row>
+          <label>Include capital letters?</label>
+          <ButtonYes/>
+        </Row>
+        <Row>
+          <ButtonGenerate/>
+          <Input type="text"/>
         </Row>
       </form>
     
@@ -50,5 +62,21 @@ const Control = styled.div`
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     border-radius: 5px;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  background: none;
+  border-radius: 4px;
+  border: 1px solid white;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  transition: all .5s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 0px 1.5px;
   }
 `;

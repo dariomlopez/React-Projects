@@ -13,15 +13,25 @@ export const ButtonPlus = () => {
   )
 };
 
+export const ButtonYes = () => {
+  return (
+    <Button>Yes</Button>
+  )
+};
+
+export const ButtonGenerate = () => {
+  return(
+    <Button>Generate</Button>
+  )
+};
+
 const Button = styled.button`
   width: 100%;
-  height: 40px;
   background: #684BFF;
   color: #fff;
   font-size: 2rem;
   font-weight: 900;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
   border: 1px solid white;
   border-radius: 4px;

@@ -1,9 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import { ButtonMinus, ButtonPlus, ButtonYes, ButtonGenerate } from "./components/buttons";
 
 function App() {
+
+  const [numberSpan, changeNumberSpan] = useState({
+    defaultNum: 7,
+    symbols: true,
+    numbers: true,
+    capitals: true
+  });
+
   return (
     <div className="container">
     <h1 className="title">Password Generator</h1>
@@ -13,7 +21,7 @@ function App() {
           <label>Número de caracteres:</label>
           <Control>
             <ButtonMinus/>
-            <span>0</span>
+            <span>{numberSpan.defaultNum}</span>
             <ButtonPlus/>
           </Control>
         </Row>
@@ -41,6 +49,7 @@ function App() {
 
 export default App;
 
+/**Row component */
 const Row = styled.div`
   margin-bottom: 40px;
   display: grid;

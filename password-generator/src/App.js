@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import { ButtonMinus, ButtonPlus, ButtonYes, ButtonGenerate } from "./components/buttons";
+import passworGen from "./functionality/passGenerator";
+
 
 function App() {
 
@@ -12,6 +14,8 @@ function App() {
     numbers: true,
     capitals: true
   });
+
+  const [passwordGenerated, changePassword] = useState ();
 
   /**Incrementing the number in the span with a function */
   const incrementNumSpan = () => {
@@ -98,7 +102,7 @@ function App() {
         </Row>
         <Row>
           <ButtonGenerate/>
-          <Input type="text"/>
+          <Input type="text" value={passwordGenerated}/>
         </Row>
       </form>
     

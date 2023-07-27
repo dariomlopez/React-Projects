@@ -15,7 +15,7 @@ function App() {
     capitals: true
   });
 
-  const [passwordGenerated, changePassword] = useState ();
+  const [passwordGenerated, changePassword] = useState ("");
 
   /**Incrementing the number in the span with a function */
   const incrementNumSpan = () => {
@@ -69,6 +69,8 @@ function App() {
   const onSubmit = (event) => {
     /**Preventing the page from reloading when clicking */
     event.preventDefault();
+
+    changePassword(passwordGenerated(defaultConfig));
   };
 
   return (

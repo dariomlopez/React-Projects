@@ -5,7 +5,8 @@ import { ButtonMinus, ButtonPlus, ButtonYes, ButtonGenerate } from "./components
 
 function App() {
 
-  const [numberSpan, changeNumberSpan] = useState({
+  /**Default states for the buttons */
+  const [defaultConfig, changeDefaultConfig] = useState({
     defaultNum: 7,
     symbol: true,
     numbers: true,
@@ -14,7 +15,7 @@ function App() {
 
   /**Incrementing the number in the span with a function */
   const incrementNumSpan = () => {
-    changeNumberSpan((previousState) => {
+    changeDefaultConfig((previousState) => {
       const newState = {...previousState}
       newState.defaultNum += 1;
       return newState;
@@ -23,45 +24,46 @@ function App() {
 
   /**Decrementing the number in the span with a function */
   const decrementNumSpan = () => {
-    if(numberSpan.defaultNum >= 5){
-      changeNumberSpan((previousState) => {
+    if(defaultConfig.defaultNum > 5){
+      changeDefaultConfig((previousState) => {
         const newState = {...previousState};
         newState.defaultNum -= 1;
         return newState;
       });
-    } else if(numberSpan.defaultNum < 5)  {
+    } else if(defaultConfig.defaultNum <= 5)  {
       alert(`Passwords with less than five character are not safe`)
     }
   };
 
-  /**Changing the state of numberSpan.symbol to false if clicked */
-  const buttonNo = () => {
-    changeNumberSpan((previousState) => {
+  /**Changing the state of defaultConfig.symbol to false if clicked */
+  const buttonSymbols = () => {
+    changeDefaultConfig((previousState) => {
       const newState = {...previousState};
       newState.symbol = !newState.symbol;
       return newState;
     })
   };
 
-  /**Changing the state of numberSpan.numbers to false if clicked */
+  /**Changing the state of defaultConfig.numbers to false if clicked */
   const buttonNumbers = () => {
-    changeNumberSpan((previousState) => {
+    changeDefaultConfig((previousState) => {
       const newState = {...previousState};
       newState.numbers = !newState.numbers;
       return newState;
     })
   };
 
-  /**Changing the state of numberSpan.capital to false if clicked */
+  /**Changing the state of defaultConfig.capital button to false if clicked */
   const buttonCap = () => {
-    changeNumberSpan((previousState) => {
+    changeDefaultConfig((previousState) => {
       const newState = {...previousState};
       newState.capitals = !newState.capitals;
       return newState;
     })
   };
-
+  
   const onSubmit = (event) => {
+    /**Preventing the page from reloading when clicking */
     event.preventDefault();
   };
 
@@ -75,24 +77,24 @@ function App() {
           <Control>
             {/* Receives the function with parameter { click } in button.js. Line 4 to 14*/}
             <ButtonMinus click={decrementNumSpan}/>
-            <span>{numberSpan.defaultNum}</span>
+            <span>{defaultConfig.defaultNum}</span>
             <ButtonPlus click={incrementNumSpan}/>
           </Control>
         </Row>
         <Row>
           <label>Include symbols?</label>
           {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
-          <ButtonYes selected={numberSpan.symbol} click={buttonNo}/>
+          <ButtonYes selected={defaultConfig.symbol} click={buttonSymbols}/>
         </Row>
         <Row>
           <label>Include numbers?</label>
           {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
-          <ButtonYes selected={numberSpan.numbers} click={buttonNumbers}/>
+          <ButtonYes selected={defaultConfig.numbers} click={buttonNumbers}/>
         </Row>
         <Row>
           <label>Include capital letters?</label>
           {/* Receives the function with two parameters {selectec, click} in button.js. Line 16 to 26 */}
-          <ButtonYes selected={numberSpan.capitals} click={buttonCap}/>
+          <ButtonYes selected={defaultConfig.capitals} click={buttonCap}/>
         </Row>
         <Row>
           <ButtonGenerate/>
@@ -106,6 +108,7 @@ function App() {
 
 export default App;
 
+/**Styled components */
 /**Row component */
 const Row = styled.div`
   margin-bottom: 40px;

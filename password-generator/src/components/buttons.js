@@ -27,7 +27,7 @@ export const ButtonYes = ({selected, click}) => {
 
 export const ButtonGenerate = () => {
   return(
-    <Button>Generate</Button>
+    <Button type="submit">Generate</Button>
   )
 };
 
